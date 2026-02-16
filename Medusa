@@ -1,0 +1,58 @@
+Medusa
+Speedy parallel network login brute-forcer
+
+Password Attacks
+Description
+Medusa is a speedy, parallel, and modular login brute-forcer. It supports many protocols including HTTP, FTP, SSH, SMB, MySQL, and more.
+
+Installation / Check
+Check if installed:
+
+which medusa
+Install command:
+
+sudo apt install medusa
+Basic Syntax
+medusa -h <host> -u <user> -P <wordlist> -M <module>
+Common Commands
+Command	What it does	When to use	Risk
+medusa -h 192.168.1.1 -u admin -P wordlist.txt -M ssh
+
+SSH brute force	Crack SSH login	
+medusa -h 192.168.1.1 -U users.txt -P pass.txt -M ftp
+
+FTP brute force	Crack FTP login	
+medusa -h 192.168.1.1 -u admin -P wordlist.txt -M mysql
+
+MySQL brute force	Crack MySQL login	
+medusa -h 192.168.1.1 -u admin -P wordlist.txt -M http -m DIR:/admin
+
+HTTP basic auth	Web login brute force	
+medusa -H hosts.txt -U users.txt -P pass.txt -M smb
+
+SMB multi-host	Network-wide brute force	
+medusa -d
+
+List modules	See supported protocols	
+Step-by-Step Guide
+1
+Choose target and protocol
+2
+Prepare username and password lists
+3
+Select module with -M
+4
+Run medusa
+5
+Review cracked credentials
+Understanding the Output
+Shows login attempts and successful credentials with [SUCCESS] marker.
+
+Important Warnings
+•
+Brute forcing is illegal without permission
+•
+Can lock out accounts
+•
+Use rate limiting to avoid detection
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
