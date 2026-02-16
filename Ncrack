@@ -1,0 +1,52 @@
+Ncrack
+High-speed network authentication cracker
+
+Password Attacks
+Description
+Ncrack is a high-speed network authentication cracking tool built by the Nmap team. It supports RDP, SSH, HTTP, SMB, FTP, and more protocols.
+
+Installation / Check
+Check if installed:
+
+which ncrack
+Install command:
+
+sudo apt install ncrack
+Basic Syntax
+ncrack [options] <target>
+Common Commands
+Command	What it does	When to use	Risk
+ncrack -p ssh 192.168.1.1 -U users.txt -P pass.txt
+
+SSH brute force	Crack SSH	
+ncrack -p rdp 192.168.1.1 -U users.txt -P pass.txt
+
+RDP brute force	Crack Windows RDP	
+ncrack -p ftp 192.168.1.1 -U users.txt -P pass.txt
+
+FTP brute force	Crack FTP	
+ncrack -iX nmap_output.xml
+
+From Nmap output	Auto-target services	
+Step-by-Step Guide
+1
+Identify target services
+2
+Prepare credential lists
+3
+Run ncrack against target
+4
+Review discovered credentials
+5
+Document findings
+Understanding the Output
+Shows discovered credentials with service and host details.
+
+Important Warnings
+•
+Only crack with authorization
+•
+Can cause account lockouts
+•
+Use timing options for stealth
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
