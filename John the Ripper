@@ -1,0 +1,127 @@
+John the Ripper
+Fast password cracker for offline hash cracking
+
+Password Attacks
+Description
+John the Ripper is a free and open-source password security auditing and password recovery tool. It can crack various password hash types and is highly customizable with different attack modes.
+
+Installation / Check
+Check if installed:
+
+which john
+Install command:
+
+sudo apt install john
+Basic Syntax
+john [options] <password-file>
+Common Commands
+Command	What it does	When to use	Risk
+john hashes.txt
+
+Auto-detect - John detects hash type	Quick start cracking	
+john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+
+Dictionary attack - Use wordlist	Common passwords	
+john --show hashes.txt
+
+Show cracked - Display results	View cracked passwords	
+john --format=raw-md5 hashes.txt
+
+Specify format - Set hash type	Known hash format	
+john --incremental hashes.txt
+
+Brute force - All combinations	Exhaustive search	
+john --incremental=digits hashes.txt
+
+Digits only - Numeric passwords	PIN cracking	
+unshadow /etc/passwd /etc/shadow > combined.txt
+
+Combine passwd/shadow - Linux passwords	Linux system passwords	
+john --rules --wordlist=wordlist.txt hashes.txt
+
+Rules mode - Apply mangling rules	Password variations	
+john --fork=4 --wordlist=wordlist.txt hashes.txt
+
+Multi-process - Use 4 CPU cores	Speed up cracking	
+john --session=mycrack hashes.txt
+
+Named session - Save progress	Long crack sessions	
+john --restore=mycrack
+
+Restore session - Continue cracking	Resume interrupted	
+john --format=nt hashes.txt
+
+NTLM hashes - Windows passwords	Windows SAM hashes	
+john --format=raw-sha256 hashes.txt
+
+SHA256 hashes - Modern hashes	SHA256 passwords	
+john --format=bcrypt hashes.txt
+
+bcrypt hashes - Strong hashing	bcrypt passwords	
+john --format=zip encrypted.zip
+
+ZIP password - Crack encrypted ZIP	Protected archives	
+john --format=rar encrypted.rar
+
+RAR password - Crack encrypted RAR	RAR archives	
+john --format=pdf document.pdf
+
+PDF password - Crack protected PDF	Encrypted PDF files	
+john --format=office document.docx
+
+Office password - MS Office files	Protected documents	
+john --list=formats
+
+List formats - Show supported hashes	Check format support	
+john --list=rules
+
+List rules - Show mangling rules	View rule sets	
+john --mask=?d?d?d?d hashes.txt
+
+Mask attack - Pattern-based	Known pattern (4 digits)	
+john --mask=?u?l?l?l?d?d?d?s hashes.txt
+
+Complex mask - Upper+lower+digits+special	Complex patterns	
+john --pot=custom.pot hashes.txt
+
+Custom potfile - Separate results	Project separation	
+john --external=filter hashes.txt
+
+External mode - Custom C filters	Advanced filtering	
+zip2john encrypted.zip > ziphash.txt
+
+Extract ZIP hash - Get hash from ZIP	Prepare ZIP for crack	
+rar2john encrypted.rar > rarhash.txt
+
+Extract RAR hash - Get hash from RAR	Prepare RAR for crack	
+pdf2john.pl document.pdf > pdfhash.txt
+
+Extract PDF hash - Get hash from PDF	Prepare PDF for crack	
+Step-by-Step Guide
+1
+Obtain password hashes (legally!)
+2
+Identify the hash type if possible
+3
+Run john with a wordlist: john --wordlist=wordlist.txt hashes.txt
+4
+Wait for results - can take seconds to days
+5
+Check progress: press any key while running
+6
+View cracked passwords: john --show hashes.txt
+7
+Results are saved in ~/.john/john.pot
+Understanding the Output
+John shows: username:password format for cracked passwords. Progress shows candidates per second and time estimates. Use --show to see all cracked passwords.
+
+Important Warnings
+•
+Only crack passwords you own or have permission to audit
+•
+Cracking stolen password hashes is illegal
+•
+Hash cracking can take very long for strong passwords
+•
+This is an offline tool - doesn't attack live systems
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
