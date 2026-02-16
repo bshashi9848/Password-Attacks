@@ -1,0 +1,52 @@
+Crunch
+Wordlist generator with specific criteria
+
+Password Attacks
+Description
+Crunch is a wordlist generator where you can specify a standard character set or a custom one. It can generate all possible combinations.
+
+Installation / Check
+Check if installed:
+
+which crunch
+Install command:
+
+sudo apt install crunch
+Basic Syntax
+crunch <min> <max> [charset] -o <output>
+Common Commands
+Command	What it does	When to use	Risk
+crunch 6 6 0123456789 -o pins.txt
+
+6-digit PINs	Generate PIN list	
+crunch 8 8 abcdefghijklmnopqrstuvwxyz -o words.txt
+
+8-char lowercase	Simple passwords	
+crunch 4 8 -t pass@@@@ -o wordlist.txt
+
+Pattern: pass + 4 chars	Known prefix	
+crunch 6 6 -t @@19@@ -o years.txt
+
+Pattern with 19	Year patterns	
+Step-by-Step Guide
+1
+Determine password criteria
+2
+Select character set
+3
+Set min/max length
+4
+Use patterns if known
+5
+Generate wordlist
+Understanding the Output
+Creates wordlist file with all possible combinations.
+
+Important Warnings
+•
+Large character sets create huge files
+•
+Disk space needed
+•
+Use patterns to reduce size
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
