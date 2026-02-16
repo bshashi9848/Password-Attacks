@@ -1,0 +1,52 @@
+CeWL
+Custom wordlist generator from websites
+
+Password Attacks
+Description
+CeWL is a custom word list generator that spiders a target URL and creates a wordlist from the content. Great for targeted password attacks.
+
+Installation / Check
+Check if installed:
+
+which cewl
+Install command:
+
+sudo apt install cewl
+Basic Syntax
+cewl <url>
+Common Commands
+Command	What it does	When to use	Risk
+cewl http://target.com -w wordlist.txt
+
+Generate wordlist	Create custom list	
+cewl http://target.com -d 2 -w wordlist.txt
+
+Depth 2 spider	Follow links	
+cewl http://target.com -m 6 -w wordlist.txt
+
+Min length 6	Filter short words	
+cewl http://target.com -e -w emails.txt
+
+Extract emails	Find emails	
+Step-by-Step Guide
+1
+Target a relevant website
+2
+Run CeWL
+3
+Review generated wordlist
+4
+Use with password cracking tools
+5
+Combine with rules
+Understanding the Output
+Creates a text file with words scraped from the website.
+
+Important Warnings
+•
+Only spider authorized sites
+•
+Customize for target
+•
+Combine with mutation rules
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
