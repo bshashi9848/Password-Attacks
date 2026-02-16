@@ -1,0 +1,60 @@
+Hashcat
+Advanced GPU-based password recovery tool
+
+Password Attacks
+Description
+Hashcat is the world's fastest and most advanced password recovery utility, supporting five unique modes of attack for over 300 highly optimized hashing algorithms. It leverages GPU power for incredible speed.
+
+Installation / Check
+Check if installed:
+
+which hashcat
+Install command:
+
+sudo apt install hashcat
+Basic Syntax
+hashcat -m <hash_type> -a <attack_mode> <hash_file> [wordlist]
+Common Commands
+Command	What it does	When to use	Risk
+hashcat -m 0 -a 0 hashes.txt rockyou.txt
+
+MD5 dictionary attack	Cracking MD5 hashes with wordlist	
+hashcat -m 1000 -a 0 hashes.txt wordlist.txt
+
+NTLM hash cracking	Cracking Windows password hashes	
+hashcat -m 0 -a 3 hashes.txt ?a?a?a?a?a?a
+
+Brute force attack	When wordlist fails, try all combinations	
+hashcat -m 2500 -a 0 capture.hccapx wordlist.txt
+
+WPA/WPA2 cracking	Cracking WiFi handshake captures	
+hashcat --show hashes.txt
+
+Show cracked passwords	View previously cracked hashes	
+hashcat -m 0 -a 0 hashes.txt wordlist.txt -r rules/best64.rule
+
+Dictionary with rules	More effective wordlist attack	
+Step-by-Step Guide
+1
+Identify hash type (use hash-identifier if needed)
+2
+Find corresponding hashcat mode number (-m)
+3
+Prepare hash file (one hash per line)
+4
+Choose attack mode and wordlist
+5
+Run hashcat and monitor progress
+6
+Use --show to see cracked passwords
+Understanding the Output
+Output shows cracking speed, progress percentage, and cracked passwords in format hash:password. Status shows estimated time remaining.
+
+Important Warnings
+•
+Only crack hashes you have permission to crack
+•
+GPU-intensive - monitor temperatures
+•
+Requires good wordlists and rules for effectiveness
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
