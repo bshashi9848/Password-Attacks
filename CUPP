@@ -1,0 +1,52 @@
+CUPP
+Common User Passwords Profiler
+
+Password Attacks
+Description
+CUPP creates custom wordlists based on target personal information like names, birthdays, pets, etc. Generates targeted password lists for social engineering.
+
+Installation / Check
+Check if installed:
+
+ls cupp.py
+Install command:
+
+git clone https://github.com/Mebus/cupp.git
+Basic Syntax
+python3 cupp.py -i
+Common Commands
+Command	What it does	When to use	Risk
+python3 cupp.py -i
+
+Interactive mode	Create custom wordlist	
+python3 cupp.py -w
+
+Improve existing list	Add permutations	
+python3 cupp.py -l
+
+Download wordlists	Get common lists	
+python3 cupp.py -a
+
+Default Alecto DB	Use default credentials	
+Step-by-Step Guide
+1
+Gather target personal info
+2
+Run CUPP in interactive mode
+3
+Enter names, dates, keywords
+4
+Review generated wordlist
+5
+Use with hydra/medusa
+Understanding the Output
+Creates a text file with password combinations based on provided info.
+
+Important Warnings
+•
+For authorized testing only
+•
+Social engineering aspect
+•
+Respect privacy
+⚠️ Use Kali Linux tools only on systems you own or have written permission to test. Unauthorized hacking is illegal and can result in criminal charges.
